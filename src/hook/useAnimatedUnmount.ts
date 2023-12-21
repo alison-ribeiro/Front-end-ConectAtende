@@ -14,19 +14,19 @@ export default function useAnimatedUnmount(visible: boolean){
 				setShouldRender(false);
 			}
 		}
+
 		const elementRef = animatedElementRef.current as HTMLElement | null;
 
 		if (!visible && elementRef) {
 			elementRef.addEventListener('animationend', handleAnimationEnd);
 		}
+
 		return () => {
 			if(elementRef){
 				elementRef.removeEventListener('animationend', handleAnimationEnd);
 			}
 		}
-		
-
-	},[])
+	}, [visible])
 
 	return {
 		shouldRender,

@@ -89,6 +89,7 @@ const GlobalStyles = createGlobalStyle`
   padding: 0;
   border: 0;
   font: ${themeLight.fonts.main};
+	font-family: 'Montserrat', sans-serif;
   vertical-align: baseline;
 	transition: all 0.50s linear;
 }
@@ -154,7 +155,7 @@ table {
   }
 
   *::-webkit-scrollbar-track {
-    background: #ffffff;
+    background: ${themeLight.colors.light};
   }
 
   *::-webkit-scrollbar-thumb {

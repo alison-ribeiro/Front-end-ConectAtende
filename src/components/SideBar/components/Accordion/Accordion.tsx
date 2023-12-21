@@ -1,60 +1,36 @@
 import { useState } from 'react';
-import { AccordionContent, Container, StyledArrowDown } from './styles';
-import PreviewMessage from '../PreviewMessage/PreviewMessage';
-import useAnimatedUnmount from '../../../../hook/useAnimatedUnmount';
+import { Container, StyledArrowDown} from './styles';
+import AccordionItemContent from './components/AccordionItemContent';
+import { ContentItem } from '../..';
 
 
-interface ContentItem {
+interface ContentItemProps  {
 	title: string;
-	items:{
-		name: string;
-  	profileImage: string;
-  	iconChannel: string;
-	}[]
-  
+	items:ContentItem[];
 }
 
-const Accordion = ( {items, title} :ContentItem) => {
-const [openItemIndex, setOpenItemIndex] = useState<boolean>(true);
-
-const {animatedElementRef,shouldRender} = useAnimatedUnmount(openItemIndex);
+const Accordion = ( {items, title} :ContentItemProps) => {
+const [openItemIndex, setOpenItemIndex] = useState<boolean>(false);
 
 const toggleItem = () => {
-	
 	setOpenItemIndex(!openItemIndex);
-	
 };
+
   return (
     <Container>
-        <div className="accordion-item">
-          <div
-            className="accordion-item-header"
-            onClick={() => toggleItem()}
-          >
-						<div className="header">
-							<span className='square'>{items.length}</span>
-							<p className='title'>{title}</p>
-							<StyledArrowDown />
-						</div>
-          </div>
-          {shouldRender && (
-					<div 
-						className={`accordion-item-content ${openItemIndex ? 'open' : ''}`}
-						ref={animatedElementRef}
-					>
-							{items.map((item, index) => (
-								<PreviewMessage key={index} name={item.name} profileImage={item.profileImage} iconChannel={item.iconChannel} />
-							))}
-            </div>
-          )}
-					{/* <AccordionContent open={openItemIndex}>
-						{items.map((item, index) => (
-							<PreviewMessage key={index} name={item.name} profileImage={item.profileImage} iconChannel={item.iconChannel} />
-						))}
-					</AccordionContent> */}
-        </div>
-      
-    </Container>
+      <div 
+				className="accordion-item" 
+				onClick={() => toggleItem()}
+			>
+				<span className='square'>{items.length}</span>
+				<p className='title'>{title}</p>
+				<StyledArrowDown openItemIndex={openItemIndex}/>
+			</div>
+			<AccordionItemContent
+				openItemIndex={openItemIndex}
+				items={items}
+			/>
+		</Container> 
   );
 };
 

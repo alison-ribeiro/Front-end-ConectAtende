@@ -13,7 +13,8 @@ export const themeLight = {
     
   },
   fontSizes: {
-		small: '12px',
+		extraSmall: '12px',
+		small: '16px',
 		medium: '24px',
 		large: '36px',
 	},
