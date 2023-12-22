@@ -6,6 +6,7 @@ export const Container = styled.div`
 	align-items: center;
 	overflow-y: scroll;
 	position: fixed;
+	z-index: 1000;
   height: 100%;
   width: 300px;
 	background-color: ${({ theme }) => theme.colors.light} ;

@@ -30,6 +30,7 @@ export default function useAnimatedUnmount(visible: boolean){
 
 	return {
 		shouldRender,
-		animatedElementRef
+		animatedElementRef,
+		setShouldRender
 	};
 }
