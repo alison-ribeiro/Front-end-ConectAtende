@@ -31,7 +31,7 @@ export const Container = styled.div`
 	.accordion-item{
 		display: flex;
 		align-items: center;
-		cursor: pointer;
+		
 		.title{
 			color: ${({ theme }) => theme.colors.primary};
 			font-size: ${({ theme }) => parseInt(theme.fontSizes.small) };

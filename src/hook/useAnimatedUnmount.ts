@@ -18,15 +18,15 @@ export default function useAnimatedUnmount(visible: boolean){
 		const elementRef = animatedElementRef.current as HTMLElement | null;
 
 		if (!visible && elementRef) {
-			elementRef.addEventListener('animationend', handleAnimationEnd);
+			elementRef.addEventListener("animationend", handleAnimationEnd);
 		}
 
 		return () => {
 			if(elementRef){
-				elementRef.removeEventListener('animationend', handleAnimationEnd);
+				elementRef.removeEventListener("animationend", handleAnimationEnd);
 			}
-		}
-	}, [visible])
+		};
+	}, [visible]);
 
 	return {
 		shouldRender,

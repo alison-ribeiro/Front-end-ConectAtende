@@ -1,21 +1,20 @@
 import { useEffect, useRef } from "react";
 import { ListMessages } from "../ListMessages";
 import { Container } from "./styles";
-import { Message } from "../../../../__mocks__/messages";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../redux/store";
 
 
-type MessageProps = {
-  messages: Message[];
-};
 
-export const ChatWindow: React.FC<MessageProps> = ({ messages }) => {
+export const ChatWindow: React.FC = () => {
+
+	const messages = useSelector((state:RootState) => state.chat);
 	const endOfMessagesRef = useRef<HTMLDivElement>(null);
-
+	
 	useEffect(() => {
 		endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
 	}, [messages]);
-	console.log(messages);
-
+	
 	return (
 		<Container>
 			{messages.map(({sender,content, time, index}) => (

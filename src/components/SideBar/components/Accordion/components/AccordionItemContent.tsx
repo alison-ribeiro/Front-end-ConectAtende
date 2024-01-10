@@ -13,21 +13,21 @@ const AccordionItemContent = ({ openItemIndex, items }: AccordionItemContentProp
 
 	const {animatedElementRef,shouldRender} = useAnimatedUnmount(openItemIndex);
 	if(!shouldRender) return null;
-  return (
-    <Container 
+	return (
+		<Container 
 			ref={animatedElementRef}
 			isLeaving={!openItemIndex}
 		>
-		{items.map((item:any, index:any) => (
-			<PreviewMessage 
-				key={index} 
-				name={item.name} 
-				profileImage={item.profileImage} 
-				iconChannel={item.iconChannel} 
-			/>
-		))}
-    </Container>
-  );
+			{items.map((item, index) => (
+				<PreviewMessage 
+					key={index} 
+					name={item.name} 
+					profileImage={item.profileImage} 
+					iconChannel={item.iconChannel} 
+				/>
+			))}
+		</Container>
+	);
 };
 
 export default AccordionItemContent;
